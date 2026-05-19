@@ -26,18 +26,18 @@ A hands-on learning platform for freshers to practice real-world DevSecOps tools
 dso-lab/
 ├── modules/
 │   ├── 01-git-github/
-│   │   ├── theory/       # Concept guides
-│   │   ├── exercises/    # Step-by-step practice
-│   │   ├── challenges/   # Solve without hints
-│   │   └── solutions/    # Check after attempting
+│   │   ├── theory/
+│   │   ├── exercises/
+│   │   ├── challenges/
+│   │   └── solutions/
 │   ├── 02-docker/
 │   ├── 03-kubernetes/
 │   ├── 04-cicd/
 │   ├── 05-security/
 │   └── 06-terraform/
-├── web-platform/         # Interactive web app
-├── cli-tool/             # Local practice CLI
-└── .github/workflows/    # CI/CD pipelines
+├── web-platform/
+├── cli-tool/
+└── .github/workflows/
 ## 🛠️ Prerequisites
 
 - Git
