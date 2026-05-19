@@ -7,11 +7,11 @@ A hands-on learning platform for freshers to practice real-world DevSecOps tools
 | Module | Tools | Status |
 |--------|-------|--------|
 | 01 | Git & GitHub | ✅ Ready |
-| 02 | Docker | 🚧 Coming Soon |
-| 03 | Kubernetes | 🚧 Coming Soon |
-| 04 | CI/CD | 🚧 Coming Soon |
-| 05 | Security (SAST, DAST, Trivy) | 🚧 Coming Soon |
-| 06 | Terraform | 🚧 Coming Soon |
+| 02 | Docker | ✅ Ready |
+| 03 | Kubernetes | ✅ Ready |
+| 04 | CI/CD | ✅ Ready |
+| 05 | Security (SAST, DAST, Trivy) | 🔄 Partial — DAST coming soon |
+| 06 | Terraform | ✅ Ready |
 
 ## 🚀 How To Use This Repo
 
