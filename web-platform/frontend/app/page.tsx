@@ -1,5 +1,6 @@
 "use client"
 import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
 
 function TerminalText() {
   const lines = [
@@ -80,10 +81,9 @@ const steps = [
 ]
 
 export default function Home() {
+  const router = useRouter()
   const [activeModule, setActiveModule] = useState<string | null>(null)
-  const [filter, setFilter] = useState<"all" | "ready" | "partial">("all")
 
-  const filtered = modules.filter(m => filter === "all" ? true : m.status === filter)
 
   return (
     <main className="min-h-screen bg-slate-950 text-white overflow-x-hidden">
@@ -141,7 +141,7 @@ export default function Home() {
         <div className="max-w-3xl mx-auto grid grid-cols-3 gap-8">
           <StatCounter target={6} label="Modules" color="text-emerald-400" />
           <StatCounter target={30} label="Exercises" color="text-cyan-400" />
-          <StatCounter target={15} label="Challenges" color="text-violet-400" />
+          <StatCounter target={15} label="Labs" color="text-violet-400" />
         </div>
       </section>
 
@@ -149,20 +149,12 @@ export default function Home() {
       <section id="modules" className="px-8 py-24 max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-4">📚 Learning Modules</h2>
-          <p className="text-slate-400 max-w-lg mx-auto mb-8">Each module has theory, guided exercises and real challenges. Work through them in order.</p>
-          <div className="flex gap-3 justify-center">
-            {(["all", "ready", "partial"] as const).map(f => (
-              <button key={f} onClick={() => setFilter(f)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition duration-200 ${filter === f ? "bg-emerald-500 text-black" : "bg-slate-800 text-slate-400 hover:bg-slate-700"}`}>
-                {f === "all" ? "All Modules" : f === "ready" ? "✅ Ready" : "🔄 Partial"}
-              </button>
-            ))}
-          </div>
+          <p className="text-slate-400 max-w-lg mx-auto mb-8">Each module has theory, guided exercises and lab work. Work through them in order.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((module) => (
+          {modules.map((module) => (
             <div key={module.id}
-              onClick={() => setActiveModule(activeModule === module.id ? null : module.id)}
+              onClick={() => router.push(`/modules/${module.id}`)}
               className="group cursor-pointer bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-600 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
               <div className="flex items-center justify-between mb-4">
                 <div className={`w-12 h-12 bg-gradient-to-br ${module.color} rounded-xl flex items-center justify-center text-2xl shadow-lg`}>
@@ -186,7 +178,7 @@ export default function Home() {
                 </div>
               )}
               <div className="mt-4 pt-4 border-t border-slate-800 flex items-center justify-between">
-                <span className="text-xs text-slate-500">Theory · Exercises · Challenges</span>
+                <span className="text-xs text-slate-500">Theory · Exercises · Labs</span>
                 <span className="text-xs text-emerald-400">{activeModule === module.id ? "▲ less" : "▼ more"}</span>
               </div>
             </div>
